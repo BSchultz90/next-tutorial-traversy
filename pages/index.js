@@ -2,6 +2,7 @@ import Head from "next/head";
 import ArticleList from "../components/ArticleList";
 import styles from "../styles/Layout.module.css";
 
+// This is the home page component in Next.JS
 export default function Home({ articles }) {
   return (
     <div>
@@ -9,12 +10,13 @@ export default function Home({ articles }) {
         <title>WebDev Newz</title>
         <meta name="keywords" content="Web Development, programming" />
       </Head>
-
+      {/* Import the ArticleList component and pass down articles as a prop to it. */}
       <ArticleList articles={articles} />
     </div>
   );
 }
 
+// This is where the fetch() request is called to export the data as StaticProps which loads on build time.
 export const getStaticProps = async () => {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts?_limit=6`
